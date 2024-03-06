@@ -63,11 +63,8 @@
     loop:
        beqz $a2,end_loop
        div $a2,$a2,10
-       mflo $a2
        mfhi $t0
-       beq $t0,$zero,increment
-       j loop
-    increment:
+       bnez $t0,end_loop
        addi $v0,$v0,1
        j loop
     end_loop:
