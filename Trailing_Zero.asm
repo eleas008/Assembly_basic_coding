@@ -60,20 +60,17 @@
        jr $ra
     trailing_zeros:
        li $v0,0
+       li $t4,5
     loop:
+       div $a2,$t4
+       mflo $t2
+       add $v0,$v0,$t2
+       move $a2,$t2
        beqz $a2,end_loop
-       div $a2,$a2,10
-       mfhi $t0
-       bnez $t0,end_loop
-       addi $v0,$v0,1
        j loop
     end_loop:
        jr $ra
-       
-       
-    
-     
-     
+      
         
     
     
